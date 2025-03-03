@@ -2,46 +2,50 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #f0f2f5;
   }
   
   .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
-    background: #fff;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .profile-section, .wallet-section, .parking-history {
+    margin-bottom: 30px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 8px;
   }
   
-  h1, h2 {
-    text-align: center;
+  #logoutButton {
+    float: right;
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
   }
   
-  form {
+  #addFundsForm {
     display: flex;
-    flex-direction: column;
     gap: 10px;
-    margin-bottom: 20px;
   }
   
-  input, button {
-    padding: 10px;
-    font-size: 16px;
+  #addFundsForm input {
+    flex: 1;
   }
   
   table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
+    margin-top: 15px;
   }
   
   th {
-    background-color: #f4f4f4;
+    background-color: #f8f9fa;
   }
-  /* xyz */
+  /* asdh */

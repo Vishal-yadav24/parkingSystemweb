@@ -3,37 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Profile</title>
+  <title>User Dashboard</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:,">
 </head>
 <body>
   <div class="container">
-    <h1>User Profile</h1>
-    <div id="userProfile">
+    <h1>User Dashboard <button id="logoutButton">Logout</button></h1>
+    
+    <div class="profile-section">
+      <h2>Profile</h2>
       <p><strong>Name:</strong> <span id="userName"></span></p>
       <p><strong>Contact:</strong> <span id="userContact"></span></p>
       <p><strong>Car Number:</strong> <span id="userCarNumber"></span></p>
-      <p><strong>Wallet Balance:</strong> <span id="userWalletBalance"></span></p>
+      <p><strong>Wallet Balance:</strong> ₹<span id="userWalletBalance"></span></p>
     </div>
 
-    <h2>Parking History</h2>
-    <table id="parkingHistory">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Location</th>
-          <th>Duration</th>
-          <th>Cost</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Parking history will be populated here -->
-      </tbody>
-    </table>
+    <div class="wallet-section">
+      <h2>Add Funds</h2>
+      <form id="addFundsForm">
+        <input type="number" id="amount" placeholder="Enter amount" min="0" required>
+        <button type="submit">Add Funds</button>
+      </form>
+    </div>
+
+    <div class="parking-history">
+      <h2>Parking History</h2>
+      <table id="parkingHistory">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Duration</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </div>
 
   <script type="module" src="user.js"></script>
 </body>
 </html>
-<!-- xyz -->
+<!-- asdas -->
