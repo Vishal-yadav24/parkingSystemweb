@@ -48,3 +48,4 @@ function assignRFID(userId) {
 
 // Load users when the page loads
 window.onload = loadUsers;
+// commit purpose

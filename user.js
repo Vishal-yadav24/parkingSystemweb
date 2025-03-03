@@ -49,3 +49,4 @@ async function loadUserProfile() {
 
 // Load profile when the page loads
 window.onload = loadUserProfile;
+// commit purpose
