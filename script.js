@@ -11,7 +11,8 @@ import {
   doc, 
   setDoc, 
   getDoc,
-  updateDoc
+  updateDoc,
+  increment
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -21,7 +22,7 @@ const firebaseConfig = {
     storageBucket: "parkingsystem-ba6c9.firebasestorage.app",
     messagingSenderId: "66941381544",
     appId: "1:66941381544:web:d3fc5ad960d0d97eb54b9d"
-  };
+};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -103,4 +104,4 @@ document.getElementById("showLogin").addEventListener("click", (e) => {
   document.getElementById("signupForm").style.display = "none";
   document.getElementById("loginForm").style.display = "block";
 });
-// sdas
+// dsfsdfd
