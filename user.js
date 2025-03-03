@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -10,17 +10,18 @@ const firebaseConfig = {
     storageBucket: "parkingsystem-ba6c9.firebasestorage.app",
     messagingSenderId: "66941381544",
     appId: "1:66941381544:web:d3fc5ad960d0d97eb54b9d"
-};
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Load user profile
+// Load user profile and parking history
 async function loadUserProfile() {
   const user = auth.currentUser;
   if (user) {
+    // Fetch user details
     const userDoc = await getDoc(doc(db, "Users", user.uid));
     if (userDoc.exists()) {
       const userData = userDoc.data();
@@ -29,6 +30,20 @@ async function loadUserProfile() {
       document.getElementById("userCarNumber").textContent = userData.CarNumber;
       document.getElementById("userWalletBalance").textContent = userData.WalletBalance;
     }
+
+    // Fetch parking history
+    const parkingHistoryBody = document.getElementById("parkingHistory").getElementsByTagName("tbody")[0];
+    parkingHistoryBody.innerHTML = "";
+
+    const querySnapshot = await getDocs(collection(db, "Users", user.uid, "ParkingHistory"));
+    querySnapshot.forEach((doc) => {
+      const history = doc.data();
+      const row = parkingHistoryBody.insertRow();
+      row.insertCell().textContent = history.Date;
+      row.insertCell().textContent = history.Location;
+      row.insertCell().textContent = history.Duration;
+      row.insertCell().textContent = history.Cost;
+    });
   }
 }
 
