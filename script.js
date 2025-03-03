@@ -1,4 +1,3 @@
-// commit purpose
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
@@ -46,13 +45,16 @@ async function getUserRole(uid) {
 }
 
 // Login functionality
-document.getElementById("loginButton").addEventListener("click", () => {
+document.getElementById("loginFormFields").addEventListener("submit", (e) => {
+  e.preventDefault();
+
   const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("loginPassword").value;
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      console.log("User logged in:", userCredential.user);
+      const user = userCredential.user;
+      console.log("User logged in:", user);
     })
     .catch((error) => {
       console.error("Login error:", error.message);
@@ -61,7 +63,9 @@ document.getElementById("loginButton").addEventListener("click", () => {
 });
 
 // Signup functionality
-document.getElementById("signupButton").addEventListener("click", () => {
+document.getElementById("signupFormFields").addEventListener("submit", (e) => {
+  e.preventDefault();
+
   const name = document.getElementById("name").value;
   const contact = document.getElementById("contact").value;
   const carNumber = document.getElementById("carNumber").value;
@@ -91,7 +95,9 @@ document.getElementById("signupButton").addEventListener("click", () => {
         .then(() => {
           console.log("User role added to Firestore");
           alert("Signup successful!");
-          document.getElementById("signupForm").reset();
+
+          // Reset the form
+          document.getElementById("signupFormFields").reset();
         })
         .catch((error) => {
           console.error("Error adding user role: ", error);
@@ -119,3 +125,4 @@ document.getElementById("showLogin").addEventListener("click", (e) => {
   document.getElementById("signupForm").style.display = "none";
   document.getElementById("loginForm").style.display = "block";
 });
+// xyz
